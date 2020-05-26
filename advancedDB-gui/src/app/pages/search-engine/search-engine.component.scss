@@ -1,0 +1,40 @@
+@import "../../@theme/styles/themes.scss";
+
+i {
+  color: nb-theme(color-info-400);
+}
+
+label {
+  font-style: italic;
+  text-decoration-color: black;
+  margin: 1rem;
+}
+
+h2 {
+  flex: 1 1 100%;
+  color: nb-theme(text-hint-color);
+  margin: 1rem 0 2rem;
+  text-align: center;
+}
+
+.search-input {
+  width: 300% !important;
+}
+
+::ng-deep {
+  body {
+    min-height: 20rem;
+  }
+
+  .nb-tree-grid-header-cell,
+  .nb-tree-grid-header-cell button {
+    text-transform: capitalize;
+  }
+}
+
+.centralize {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

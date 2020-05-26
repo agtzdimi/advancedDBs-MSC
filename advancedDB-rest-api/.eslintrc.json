@@ -1,0 +1,19 @@
+{
+    "extends": "strongloop",
+    "parserOptions": {
+        "ecmaVersion": 2017
+    },
+    "rules": {
+        "max-len": [
+            "error",
+            150
+        ],
+        "space-before-function-paren": [
+            "off",
+            "never"
+        ]
+    },
+    "env": {
+        "es6": true
+    }
+}

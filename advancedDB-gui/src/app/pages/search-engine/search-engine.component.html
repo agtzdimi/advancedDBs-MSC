@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2>Search Query</h2>
+    <nb-card size="giant">
+      <nb-card-header>
+        Search Relevant documents
+      </nb-card-header>
+      <nb-card-body>
+        <div class="row">
+          <div class="col-md-4 centralize">
+            <label for="K-Neighbors">K Relevant Documents</label>
+            <input type="number" nbInput min="1" max="20" [(ngModel)]="knn" />
+          </div>
+          <div class="col-md-4 centralize">
+            <nb-form-field>
+              <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
+              <input
+                type="text"
+                nbInput
+                class="search-input"
+                [(ngModel)]="query"
+              />
+            </nb-form-field>
+          </div>
+          <div class="col-md-4 centralize">
+            <label for="distances">Distance Metrics</label>
+            <nb-select
+              id="distances"
+              placeholder="Distance"
+              hero
+              status="info"
+              style="width: 50% !important;"
+              [(ngModel)]="distance"
+            >
+              <nb-option value="cityblock">cityblock</nb-option>
+              <nb-option value="cosine">cosine</nb-option>
+              <nb-option value="euclidean">euclidean</nb-option>
+              <nb-option value="l1">l1</nb-option>
+              <nb-option value="l2">l2</nb-option>
+              <nb-option value="manhattan">manhattan</nb-option>
+              <nb-option value="braycurtis">braycurtis</nb-option>
+              <nb-option value="canberra">canberra</nb-option>
+              <nb-option value="chebyshev">chebyshev</nb-option>
+              <nb-option value="correlation">correlation</nb-option>
+              <nb-option value="dice">dice</nb-option>
+              <nb-option value="hamming">hamming</nb-option>
+              <nb-option value="jaccard">jaccard</nb-option>
+              <nb-option value="kulsinski">kulsinski</nb-option>
+              <nb-option value="minkowski">minkowski</nb-option>
+              <nb-option value="rogerstanimoto">rogerstanimoto</nb-option>
+              <nb-option value="russellrao">russellrao</nb-option>
+              <nb-option value="seuclidean">seuclidean</nb-option>
+              <nb-option value="sokalmichener">sokalmichener</nb-option>
+              <nb-option value="sokalsneath">sokalsneath</nb-option>
+              <nb-option value="sqeuclidean">sqeuclidean</nb-option>
+              <nb-option value="yule">yule</nb-option>
+            </nb-select>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-md-5"></div>
+
+          <div class="col-md-4">
+            <button nbButton status="primary" (click)="search()">
+              <nb-icon icon="search-outline" pack="eva"></nb-icon>Search
+            </button>
+          </div>
+        </div>
+
+        <table class="m-4" [nbTreeGrid]="dataSource" nbSort (sort)="changeSort($event)" equalColumnsWidth>
+
+          <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+          <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+          <ng-container *ngFor="let column of defaultColumns" [nbTreeGridColumnDef]="column">
+            <th nbTreeGridHeaderCell [nbSortHeader]="getDirection(column)" *nbTreeGridHeaderCellDef>
+              {{column}}
+            </th>
+
+            <td nbTreeGridCell *nbTreeGridCellDef="let row" (click)="open(row.data)">{{row.data[column]}}</td>
+          </ng-container>
+
+        </table>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
