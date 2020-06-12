@@ -29,3 +29,4 @@ To install the data at initialization:
 - `unzip data.zip`
 - `cp ../advancedDB-rest-api/server/pythonScripts/search.py .`
 - `python3.6 search.py --k 5 --metric cosine --init --query "searchTerm"`
+- `rm search.py`
