@@ -23,3 +23,9 @@ To install the python libraries for processing the texts:
 - `pip install sklearn`
 - `pip install -U spacy`
 - `pip install --user -U nltk`
+
+To install the data at initialization:
+- `cd ./data`
+- `unzip data.zip`
+- `cp ../advancedDB-rest-api/server/pythonScripts/search.py .`
+- `python3.6 search.py --k 5 --metric cosine --init --query "searchTerm"`
