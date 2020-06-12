@@ -131,7 +131,7 @@ db = dbclient.advancedDBs
 if init == True:
    initialization()
 
-result = db.documents.find({},{"vector": 1,"title": 1, 'filteredText': 1,'wikitext': 1, "_id": 0 })
+result = db.documents.find({},{"vector": 1,"title": 1, 'filteredText': 1,'wikitext': 1, 'url': 1, "_id": 0 })
 query = args['query']
 filteredQuery = removeStopwords(query)
 vocabulary = json.loads(json.dumps(db.vocabulary.find({},{"vocabulary": 1, "_id": 0 })[0]))
@@ -145,6 +145,7 @@ scores = []
 
 for i in result:
    doc = json.loads(json.dumps(i))
+   url = doc['url']
    title = doc['title']
    originalText = doc['wikitext']
    occurencies = 0
@@ -160,7 +161,8 @@ for i in result:
    titles.append({
    "title": title,
    "originalText": originalText,
-   "relevance": occurencies
+   "relevance": occurencies,
+   "url": url
    })
    sss = csr_matrix(doc)
    

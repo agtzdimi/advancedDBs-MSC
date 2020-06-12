@@ -68,19 +68,52 @@
           </div>
         </div>
 
-        <table class="m-4" [nbTreeGrid]="dataSource" nbSort (sort)="changeSort($event)" equalColumnsWidth>
-
+        <table
+          class="m-4"
+          [nbTreeGrid]="dataSource"
+          nbSort
+          (sort)="changeSort($event)"
+          equalColumnsWidth
+        >
           <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
-          <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+          <tr
+            nbTreeGridRow
+            *nbTreeGridRowDef="let row; columns: allColumns"
+          ></tr>
 
-          <ng-container *ngFor="let column of defaultColumns" [nbTreeGridColumnDef]="column">
-            <th nbTreeGridHeaderCell [nbSortHeader]="getDirection(column)" *nbTreeGridHeaderCellDef>
-              {{column}}
+          <ng-container
+            *ngFor="let column of defaultColumns"
+            [nbTreeGridColumnDef]="column"
+          >
+            <th
+              nbTreeGridHeaderCell
+              [nbSortHeader]="getDirection(column)"
+              *nbTreeGridHeaderCellDef
+            >
+              {{ column }}
             </th>
 
-            <td nbTreeGridCell *nbTreeGridCellDef="let row" (click)="open(row.data)">{{row.data[column]}}</td>
+            <div *ngIf="column !== 'Url'">
+              <td
+                nbTreeGridCell
+                *nbTreeGridCellDef="let row"
+                (click)="open(row.data)"
+              >
+                {{ row.data[column] }}
+              </td>
+            </div>
+            <div *ngIf="column === 'Url'">
+              <td
+                style="cursor: pointer;"
+                nbTreeGridCell
+                *nbTreeGridCellDef="let row"
+              >
+                <a [href]="row.data[column]" target="_blank">{{
+                  row.data[column]
+                }}</a>
+              </td>
+            </div>
           </ng-container>
-
         </table>
       </nb-card-body>
     </nb-card>

@@ -47,27 +47,26 @@ exports.searchDocument = (req, res) => {
     const query = req.body.query;
     const search = shell.exec(
       "python3.6 " +
-      __dirname +
-      "/../pythonScripts/search.py --k " +
-      k +
-      " --metric " +
-      distance +
-      " --query " +
-      query,
+        __dirname +
+        "/../pythonScripts/search.py --k " +
+        k +
+        " --metric " +
+        distance +
+        " --query " +
+        query,
       { silent: true }
     );
     if (search.stderr !== "") {
       res.json({
-        status: "error",
+        status: "error"
       });
     } else {
       res.json({
         status: "success",
-        data: search,
+        data: search
       });
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-
 };

@@ -20,6 +20,7 @@ interface FSEntry {
   title: string;
   distance: string;
   relevance: number;
+  Url: string;
 }
 
 @Component({
@@ -32,7 +33,7 @@ export class SearchEngineComponent {
   knn: number = 5;
   query: string = "";
 
-  defaultColumns = ["title", "distance", "relevance"];
+  defaultColumns = ["title", "distance", "relevance", "Url"];
   allColumns = [...this.defaultColumns];
 
   dataSource: NbTreeGridDataSource<any>;
@@ -78,6 +79,7 @@ export class SearchEngineComponent {
                 title: this.results[i]["title"],
                 distance: this.results[i]["distance"],
                 relevance: this.results[i]["relevance"],
+                Url: this.results[i]["url"],
               },
             });
           }
