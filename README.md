@@ -5,6 +5,7 @@ Search Engine with Texts for the Advanced Database MSc course
 
 NodeJS should be installed
 Python 3.6+ should be installed and included in the PATH variable
+A MongoDB should be installed and mongod service should be active
 
 ## Installation
 
