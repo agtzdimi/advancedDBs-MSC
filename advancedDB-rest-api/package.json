@@ -17,7 +17,7 @@
     "forever-monitor": "^1.7.1",
     "jade": "^1.11.0",
     "jquery": "^1.9.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mongodb": "^3.1.10",
     "morgan": "^1.9.1",
     "nodemailer": "^6.0.0",
